@@ -1,0 +1,27 @@
+{
+  "name": "fullstack-backend-4-plus-1-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staten-island-tech/fullstack-backend-4-plus-1-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/staten-island-tech/fullstack-backend-4-plus-1-backend/issues"
+  },
+  "homepage": "https://github.com/staten-island-tech/fullstack-backend-4-plus-1-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
