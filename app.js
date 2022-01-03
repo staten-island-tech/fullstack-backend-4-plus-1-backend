@@ -1,6 +1,7 @@
 const express = require("express"); //this file requires express
 const port = process.env.PORT || 3000; //use external server port or local 3000
 const app = express();  //instantiate express
+require("./DB/mongoose"); //ensures mongoose connects and runs
 const routes = require("./routes/index"); //import index from router folder
 //Takes the raw request and turns them into usable properties on req.body
 app.use(express.json());
