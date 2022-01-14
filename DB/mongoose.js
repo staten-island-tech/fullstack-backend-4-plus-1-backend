@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-require("dotenv").config({pth: "variables.env"});
+require("dotenv").config({path: "variables.env"});
 
 mongoose
     .connect(`${process.env.DATABASE}`,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}).then(() => console.log("Connected to DB"))
+}).then(() => console.log("Connected to DATABASE"));
 
 mongoose.connection.on("error", (err)=>{
     console.log(`${err.message}`);
