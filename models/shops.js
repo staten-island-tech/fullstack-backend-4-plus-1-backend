@@ -4,7 +4,7 @@ const shopSchema = new mongoose.Schema({
     name:{
         type:String,
         trim:true, //" Mike" => "Mike"
-        required: "Please enter a STore Name",
+        required: "Please enter a Store Name",
     },
     slug:String,
     description: {
@@ -22,4 +22,4 @@ shopSchema.pre('save', function(next){
     this.slug=slugify(this.name);
     next();
 });
-mongoose.model.exports = mongoose.model("Shop", shopSchema);
+module.exports = mongoose.model("Shop", shopSchema);

@@ -1,7 +1,7 @@
 const Shop = require("../models/shops")
 
 exports.homePage =  (req,res)=>{
-    const stores = ["Dunkin", "Tim Hortons", "STarbucks"];
+    const stores = ["Dunkin", "Tim Hortons", "Starbucks"];
     try{
         console.log(req.name)
         res.json(stores)
@@ -10,9 +10,10 @@ exports.homePage =  (req,res)=>{
     }
 };
 
-exports.Createshop = async (req,res)=>{
+exports.createShop = async (req,res)=>{
     try{
         const shop= new Shop(req.body)
+        await shop.save();
     }catch(error){
         res.status(500).json(error);
     }
