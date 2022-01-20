@@ -14,8 +14,8 @@ const shopSchema = new mongoose.Schema({
     tags: [String],
 });
 
-shopSchema.pre('save', function(next){
-    if(!this.isModified('name')){
+shopSchema.pre("save", function(next){
+    if(!this.isModified("name")){
         next();
         return;
     }
