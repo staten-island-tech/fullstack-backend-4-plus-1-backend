@@ -5,7 +5,7 @@ require("./DB/mongoose"); //ensures mongoose connects and runs
 const routes = require("./routes/index"); //import index from router folder
 //Takes the raw request and turns them into usable properties on req.body
 app.use(express.json());
-// app.use(express.urlencoded());
+app.use(express.urlencoded());
 
 app.use("/", routes); //use the exported file exported as "router"
 app.listen(port, ()=>{
