@@ -16,14 +16,13 @@ exports.createShop = async (req, res) => {
     await shop.save();
     res.json(shop);
   } catch (error) {
-    console.log(error);
     res.status(500).json(error);
   }
 };
 
-exports.getshops = async (req, res) => {
+exports.getShops = async (req, res) => {
   try {
-    const shop = await Shop.find().limit(2);
+    const shops = await Shop.find().limit(2);
     res.json(shops);
   } catch (error) {
     console.log(error);
