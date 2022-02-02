@@ -36,7 +36,19 @@ exports.updateShop = async (req, res) => {
     const updates = Object.keys(req.body);
     updates.forEach((update) => (shop[update] = req.body[update]));
     await shop.save();
-    res.json();
+    res.json(shop);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.deleteShop = async (req, res) => {
+  try {
+    const shop = await shop.findbyIdandDelete(req.params.id);
+    if (!shop) {
+      res.status(404).send();
+    }
+    res.send(`${shop} was deleted from the DB`);
   } catch (error) {
     console.log(error);
   }
