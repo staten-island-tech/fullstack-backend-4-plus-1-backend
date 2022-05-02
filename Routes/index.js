@@ -3,17 +3,15 @@ const router = new express.Router();
 const leaderBoardController = require("../Controllers/leaderBoardController");
 const authController = require("../Controllers/authMiddleWare");
 
-router.get(
- "/",
- leaderBoardController.middlewareSample,
- leaderBoardController.leaderBoard
-);
+router.get("/", leaderBoardController.getUser);
 
 router.get(
  "/auth",
  authController.authMiddleware,
  authController.authPage
 );
+
+router.post("/add", leaderBoardController.createUser);
 
 // router.get("/user/:name", async (req, res) => {
 //  try {
