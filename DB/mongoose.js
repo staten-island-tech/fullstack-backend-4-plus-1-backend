@@ -1,0 +1,14 @@
+const mongoose = require("mongoose");
+require("dotenv").config({ path: "variables.env" });
+const uri =
+ "mongodb+srv://harveyDev:Oceantide21@cluster0.9e0na.mongodb.net/DataBase?retryWrites=true&w=majority";
+mongoose
+ .connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+ })
+ .then(() => console.log("conected to DB"));
+
+mongoose.connection.on("error", (err) => {
+ console.log(`${err.message}`);
+});
