@@ -22,4 +22,5 @@ UserSchema.pre("save", function (next) {
  this.slug = slugify(this.name);
  next();
 });
+
 module.exports = mongoose.model("user", UserSchema);

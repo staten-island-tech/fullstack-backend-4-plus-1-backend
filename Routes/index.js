@@ -12,13 +12,7 @@ router.get(
 );
 
 router.post("/add", leaderBoardController.createUser);
-
-// router.get("/user/:name", async (req, res) => {
-//  try {
-//   res.json(req.params.name);
-//  } catch (error) {
-//   console.log(error);
-//  }
-// });
+router.patch("/user/:id", leaderBoardController.updateUser);
+router.delete("/user/:id", leaderBoardController.removeUser);
 
 module.exports = router;

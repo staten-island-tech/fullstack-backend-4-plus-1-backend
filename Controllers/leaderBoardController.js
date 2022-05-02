@@ -27,3 +27,29 @@ exports.getUser = async (req, res) => {
   res.status(500).json(error);
  }
 };
+
+exports.updateUser = async (req, res) => {
+ try {
+  const user = await User.findById(req.params.id);
+  const updates = Object.keys(req.body);
+  updates.forEach((update) => {
+   user[update] = req.body[update];
+  });
+  await user.save();
+  res.json(user);
+ } catch (error) {
+  console.log(error);
+ }
+};
+
+exports.removeUser = async (req, res) => {
+ try {
+  const user = await User.findByIdAndDelete(req.params.id);
+  if (!user) {
+   res.status(404).send();
+  }
+  res.send(`${user.name} was deleted from the DB`);
+ } catch (error) {
+  console.log(error);
+ }
+};
