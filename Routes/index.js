@@ -3,7 +3,7 @@ const router = new express.Router();
 const leaderBoardController = require("../Controllers/leaderBoardController");
 const authController = require("../Controllers/authMiddleWare");
 
-router.get("/", leaderBoardController.getUser);
+router.get("/:id", leaderBoardController.getUser);
 
 router.get(
  "/auth",

@@ -21,7 +21,7 @@ exports.createUser = async (req, res) => {
 
 exports.getUser = async (req, res) => {
  try {
-  const Users = await User.find(); //.limit(5) for limio
+  const Users = await User.findById(req.params.id, { _id: 0 }); //.limit(5) for limio
   res.json(Users);
  } catch (error) {
   res.status(500).json(error);
