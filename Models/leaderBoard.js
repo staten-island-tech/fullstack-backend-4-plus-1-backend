@@ -12,6 +12,30 @@ const UserSchema = new mongoose.Schema({
   type: String,
   trim: true,
  },
+ playCount: {
+  type: String,
+  trim: true,
+ },
+ accuracy: {
+  type: String,
+  trim: true,
+ },
+ performance: {
+  type: String,
+  trim: true,
+ },
+ SS: {
+  type: String,
+  trim: true,
+ },
+ S: {
+  type: String,
+  trim: true,
+ },
+ A: {
+  type: String,
+  trim: true,
+ },
 });
 
 UserSchema.pre("save", function (next) {

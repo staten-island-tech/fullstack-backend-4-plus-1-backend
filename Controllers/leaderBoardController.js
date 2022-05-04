@@ -1,4 +1,5 @@
 const User = require("../Models/leaderBoard");
+const Beatmaps = require("../Models/beatmapData");
 exports.leaderBoard = async (req, res) => {
  const users = ["harvey, jajadiff, yourmom, JOY"];
  try {
@@ -9,11 +10,12 @@ exports.leaderBoard = async (req, res) => {
  }
 };
 
-exports.createUser = async (req, res) => {
+exports.getBeatmapData = async (req, res) => {
  try {
-  const user = new User(req.body);
-  await user.save();
-  res.json(user);
+  const beatmapData = await Beatmaps.findById(req.params.id, {
+   _id: 0,
+  }); //.limit(5) for limio
+  res.json(beatmapData);
  } catch (error) {
   res.status(500).json(error);
  }
@@ -21,8 +23,18 @@ exports.createUser = async (req, res) => {
 
 exports.getUser = async (req, res) => {
  try {
-  const Users = await User.findById(req.params.id, { _id: 0 }); //.limit(5) for limio
-  res.json(Users);
+  const users = await User.find(); //.limit(5) for limio
+  res.json(users);
+ } catch (error) {
+  res.status(500).json(error);
+ }
+};
+
+exports.createUser = async (req, res) => {
+ try {
+  const user = new User(req.body);
+  await user.save();
+  res.json(user);
  } catch (error) {
   res.status(500).json(error);
  }
