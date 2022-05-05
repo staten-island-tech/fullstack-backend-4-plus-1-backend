@@ -1,7 +1,7 @@
 {
  "scripts": {
   "dev": "nodemon app.js",
-  "start": "node app.js"
+  "start": "node app"
  },
  "dependencies": {
   "dotenv": "^16.0.0",
