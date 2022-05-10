@@ -1,8 +1,12 @@
 const express = require("express");
-const port = process.env.Port || 8080;
+const port = process.env.Port || 3000;
 const app = express();
+const { auth } = require('express-openid-connect');
 require("./DB/mongoose");
 const routes = require("./Routes/index");
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+
 
 //takes the raw request and turns them into usable properties on req.body
 app.use(express.json());
@@ -18,7 +22,29 @@ app.use(function (req, res, next) {
  next();
 });
 
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'a long, randomly-generated string stored in env',
+  baseURL: 'http://localhost:3000',
+  clientID: 'O1sWKukVBnRqCB0kGLrngUcEPsKhkzo8',
+  issuerBaseURL: 'https://dev-2szf794g.us.auth0.com'
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
+
+// req.isAuthenticated is provided from the auth router
+
+
+
 app.use("/", routes);
 app.listen(port, () => {
  console.log(`server is up on ${port}`);
 });
+
+

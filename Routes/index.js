@@ -12,6 +12,7 @@ router.get(
  authController.authPage
 );
 
+
 router.post("/add", leaderBoardController.createUser);
 router.patch("/user/:id", leaderBoardController.updateUser);
 router.delete("/user/:id", leaderBoardController.removeUser);
