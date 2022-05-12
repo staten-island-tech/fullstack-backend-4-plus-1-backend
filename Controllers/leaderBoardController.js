@@ -1,5 +1,6 @@
 const User = require("../Models/leaderBoard");
 const Beatmaps = require("../Models/beatmapData");
+
 exports.leaderBoard = async (req, res) => {
  const users = ["harvey, jajadiff, yourmom, JOY"];
  try {
