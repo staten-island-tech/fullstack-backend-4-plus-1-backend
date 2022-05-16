@@ -17,6 +17,7 @@ exports.getBeatmapData = async (req, res) => {
    _id: 0,
   }); //.limit(5) for limio
   res.json(beatmapData);
+  next()
  } catch (error) {
   res.status(500).json(error);
  }

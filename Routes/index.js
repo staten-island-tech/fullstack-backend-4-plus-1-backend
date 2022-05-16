@@ -11,24 +11,26 @@ const checkJwt = jwt({
   issuerBaseURL: `https://dev-2szf794g.us.auth0.com/`,
   cache: true,
   rateLimit: true,
+  
   jwksRequestsPerMinute: 5,
   jwksUri: `https://dev-2szf794g.us.auth0.com/.well-known/jwks.json`,
  }),
 
  // Validate the audience and the issuer
+ credentialsRequired: false,
  audience: "http://localhost:6000", //replace with your API's audience, available at Dashboard > APIs
  issuer: "https://dev-2szf794g.us.auth0.com/",
  algorithms: ["RS256"],
 });
 
-router.get("/beatmaos/:id", leaderBoardController.getBeatmapData);
+router.get("/beatmaps/:id", checkJwt, leaderBoardController.getBeatmapData);
 
 router.get("/:id",  leaderBoardController.getUser);
 router.patch("/update/:id",  async (req, res) => {
     try {
       const user = await User.findById(req.params.id);
       const updates = Object.keys(req.body);
-      console.log(user)
+      console.log(updates)
       updates.forEach((update) => (user[update] = req.body[update]));
       await user.save();
       console.log(req.body);
