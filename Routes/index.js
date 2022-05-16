@@ -2,7 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const leaderBoardController = require("../Controllers/leaderBoardController");
 const authController = require("../Controllers/authMiddleWare");
-
+const User = require("../Models/users");
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 const checkJwt = jwt({
@@ -21,8 +21,22 @@ const checkJwt = jwt({
  algorithms: ["RS256"],
 });
 
-router.get("/:id", leaderBoardController.getBeatmapData);
-router.get("/", checkJwt, leaderBoardController.getUser);
+router.get("/beatmaos/:id", leaderBoardController.getBeatmapData);
+
+router.get("/:id",  leaderBoardController.getUser);
+router.patch("/update/:id",  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      const updates = Object.keys(req.body);
+      console.log(user)
+      updates.forEach((update) => (user[update] = req.body[update]));
+      await user.save();
+      console.log(req.body);
+      res.json(user);
+    } catch (err) {
+      res.status(400).send(err.message);
+    }
+  });
 
 // router.get("/auth", checkJwt);
 

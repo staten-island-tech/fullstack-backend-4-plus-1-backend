@@ -1,4 +1,4 @@
-const User = require("../Models/leaderBoard");
+const User = require("../Models/users");
 const Beatmaps = require("../Models/beatmapData");
 
 exports.leaderBoard = async (req, res) => {
@@ -24,7 +24,7 @@ exports.getBeatmapData = async (req, res) => {
 
 exports.getUser = async (req, res) => {
  try {
-  const users = await User.find(); //.limit(5) for limio
+  const users = await User.findById(req.params.id); //.limit(5) for limio
   res.json(users);
  } catch (error) {
   res.status(500).json(error);
