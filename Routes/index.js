@@ -17,7 +17,7 @@ const checkJwt = jwt({
  }),
 
  // Validate the audience and the issuer
- credentialsRequired: false,
+ 
  audience: "http://localhost:6000", //replace with your API's audience, available at Dashboard > APIs
  issuer: "https://dev-2szf794g.us.auth0.com/",
  algorithms: ["RS256"],
