@@ -11,7 +11,7 @@ const checkJwt = jwt({
   issuerBaseURL: `https://dev-2szf794g.us.auth0.com/`,
   cache: true,
   rateLimit: true,
-  
+
   jwksRequestsPerMinute: 5,
   jwksUri: `https://dev-2szf794g.us.auth0.com/.well-known/jwks.json`,
  }),
@@ -23,22 +23,27 @@ const checkJwt = jwt({
  algorithms: ["RS256"],
 });
 
-router.get("/beatmaps/:id", checkJwt, leaderBoardController.getBeatmapData);
+router.get(
+ "/beatmaps/:id",
+ checkJwt,
+ leaderBoardController.getBeatmapData
+);
 
-router.get("/:id",  leaderBoardController.getUser);
-router.patch("/update/:id",  async (req, res) => {
-    try {
-      const user = await User.findById(req.params.id);
-      const updates = Object.keys(req.body);
-      console.log(updates)
-      updates.forEach((update) => (user[update] = req.body[update]));
-      await user.save();
-      console.log(req.body);
-      res.json(user);
-    } catch (err) {
-      res.status(400).send(err.message);
-    }
-  });
+router.get("/:id", leaderBoardController.getUser);
+router.get("/", leaderBoardController.getAllUser);
+router.patch("/update/:id", async (req, res) => {
+ try {
+  const user = await User.findById(req.params.id);
+  const updates = Object.keys(req.body);
+  console.log(updates);
+  updates.forEach((update) => (user[update] = req.body[update]));
+  await user.save();
+  console.log(req.body);
+  res.json(user);
+ } catch (err) {
+  res.status(400).send(err.message);
+ }
+});
 
 // router.get("/auth", checkJwt);
 

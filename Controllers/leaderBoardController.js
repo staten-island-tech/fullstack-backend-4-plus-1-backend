@@ -17,7 +17,7 @@ exports.getBeatmapData = async (req, res) => {
    _id: 0,
   }); //.limit(5) for limio
   res.json(beatmapData);
-  next()
+  next();
  } catch (error) {
   res.status(500).json(error);
  }
@@ -32,14 +32,14 @@ exports.getUser = async (req, res) => {
  }
 };
 
-exports.newUser = async (req, res) => {
-    try {
-     const users = await User.findById(req.params.id); //.limit(5) for limio
-     res.json(users);
-    } catch (error) {
-     res.status(500).json(error);
-    }
-   };
+exports.getAllUser = async (req, res) => {
+ try {
+  const users = await User.find(); //.limit(5) for limio
+  res.json(users);
+ } catch (error) {
+  res.status(500).json(error);
+ }
+};
 
 exports.createUser = async (req, res) => {
  try {
