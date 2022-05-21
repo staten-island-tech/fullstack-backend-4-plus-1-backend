@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const slugify = require("slugify");
 
 const UserSchema = new mongoose.Schema({
- name: {
+ username: {
   type: String,
   trim: true,
   required: "please enter a Username",

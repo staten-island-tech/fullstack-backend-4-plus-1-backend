@@ -17,7 +17,7 @@ const checkJwt = jwt({
  }),
 
  // Validate the audience and the issuer
- 
+
  audience: "http://localhost:6000", //replace with your API's audience, available at Dashboard > APIs
  issuer: "https://dev-2szf794g.us.auth0.com/",
  algorithms: ["RS256"],
@@ -31,7 +31,7 @@ router.get(
 
 router.get("/:id", leaderBoardController.getUser);
 router.get("/", leaderBoardController.getAllUser);
-router.patch("/update/:id", async (req, res) => {
+router.patch("/update/:id", checkJwt, async (req, res) => {
  try {
   const user = await User.findById(req.params.id);
   const updates = Object.keys(req.body);
