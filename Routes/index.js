@@ -31,7 +31,7 @@ router.get(
 
 router.get("/:id", leaderBoardController.getUser);
 router.get("/", leaderBoardController.getAllUser);
-router.patch("/update/:id", async (req, res) => {
+router.patch("/update/:id", checkJwt, async (req, res) => {
  try {
   const user = await User.findById(req.params.id);
   const updates = Object.keys(req.body);
