@@ -4,15 +4,15 @@ const slugify = require("slugify");
 const volSettingsSchema = mongoose.Schema({
  master: {
   type: String,
-  default: "",
+  default: "0.5",
  },
  music: {
   type: String,
-  default: "",
+  default: "0.5",
  },
  hitSound: {
   type: String,
-  default: "",
+  default: "0.2",
  },
 });
 
@@ -32,7 +32,7 @@ const userSettingsSchema = mongoose.Schema({
 const gameSettingsSchema = mongoose.Schema({
  scrollSpeed: {
   type: String,
-  default: "",
+  default: "10",
  },
  keys: {
   type: String,
