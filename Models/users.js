@@ -49,6 +49,10 @@ const gameSettingsSchema = mongoose.Schema({
 });
 
 const gameScoreDataSchema = mongoose.Schema({
+ song: {
+  type: String,
+  default: "",
+ },
  leaderBoardPos: {
   type: Number,
   trim: true,
