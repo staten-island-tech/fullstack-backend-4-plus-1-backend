@@ -50,38 +50,42 @@ const gameSettingsSchema = mongoose.Schema({
 
 const gameScoreDataSchema = mongoose.Schema({
  leaderBoardPos: {
-  type: String,
+  type: Number,
   trim: true,
-  default: "",
  },
  playCount: {
-  type: String,
+  type: Number,
   trim: true,
-  default: "",
+  default: 0,
  },
  accuracy: {
-  type: String,
+  type: Number,
   trim: true,
   default: "",
  },
  performance: {
-  type: String,
+  type: Number,
   trim: true,
   default: "",
  },
+ maxCombo: {
+  type: Number,
+  trim: true,
+  default: 0,
+ },
  SS: {
-  default: "",
-  type: String,
+  default: 0,
+  type: Number,
   trim: true,
  },
  S: {
-  default: "",
-  type: String,
+  default: 0,
+  type: Number,
   trim: true,
  },
  A: {
-  default: "",
-  type: String,
+  default: 0,
+  type: Number,
   trim: true,
  },
 });
