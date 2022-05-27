@@ -56,6 +56,7 @@ const gameScoreDataSchema = mongoose.Schema({
  leaderBoardPos: {
   type: Number,
   trim: true,
+  default: 0,
  },
  playCount: {
   type: Number,
@@ -65,12 +66,12 @@ const gameScoreDataSchema = mongoose.Schema({
  accuracy: {
   type: Number,
   trim: true,
-  default: "",
+  default: 0,
  },
  performance: {
   type: Number,
   trim: true,
-  default: "",
+  default: 0,
  },
  maxCombo: {
   type: Number,
