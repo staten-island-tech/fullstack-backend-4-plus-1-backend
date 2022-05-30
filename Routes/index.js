@@ -1,7 +1,6 @@
 const express = require("express");
 const router = new express.Router();
 const leaderBoardController = require("../Controllers/leaderBoardController");
-const authController = require("../Controllers/authMiddleWare");
 const User = require("../Models/users");
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
@@ -23,9 +22,9 @@ const checkJwt = jwt({
  algorithms: ["RS256"],
 });
 
-router.get("/:id", leaderBoardController.getUser);
-router.get("/", leaderBoardController.getAllUser);
-router.patch("/update/:id", async (req, res) => {
+router.get("/:id", checkJwt, leaderBoardController.getUser);
+router.get("/", checkJwt, leaderBoardController.getAllUser);
+router.patch("/update/:id", checkJwt, async (req, res) => {
  try {
   const user = await User.findById(req.params.id);
   const updates = Object.keys(req.body);
@@ -41,8 +40,8 @@ router.patch("/update/:id", async (req, res) => {
 
 // router.get("/auth", checkJwt);
 
-router.post("/add", leaderBoardController.createUser);
-router.patch("/user/:id", leaderBoardController.updateUser);
-router.delete("/user/:id", leaderBoardController.removeUser);
+// router.post("/add", leaderBoardController.createUser);
+// router.patch("/user/:id", leaderBoardController.updateUser);
+// router.delete("/user/:id", leaderBoardController.removeUser);
 
 module.exports = router;
