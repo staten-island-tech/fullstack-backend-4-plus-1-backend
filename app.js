@@ -20,22 +20,6 @@ app.use(function (req, res, next) {
  next();
 });
 
-// app.get("/authorized", checkJwt, async function (req, res) {
-//     try {
-//       console.log(req.user);
-//       res.json(req.user);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   });
-//   app.get("/", async function (req, res) {
-//     try {
-//       res.json("Secured Resource");
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   });
-
 app.use("/", routes);
 
 app.listen(port, () => {
