@@ -1,7 +1,6 @@
 const express = require("express");
 const router = new express.Router();
 const leaderBoardController = require("../Controllers/leaderBoardController");
-const authController = require("../Controllers/authMiddleWare");
 const User = require("../Models/users");
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
@@ -22,12 +21,6 @@ const checkJwt = jwt({
  issuer: "https://dev-2szf794g.us.auth0.com/",
  algorithms: ["RS256"],
 });
-
-router.get(
- "/beatmaps/:id",
- checkJwt,
- leaderBoardController.getBeatmapData
-);
 
 router.get("/:id", leaderBoardController.getUser);
 router.get("/", leaderBoardController.getAllUser);

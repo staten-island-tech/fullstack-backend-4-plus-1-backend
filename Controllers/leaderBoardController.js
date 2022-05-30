@@ -1,27 +1,4 @@
 const User = require("../Models/users");
-const Beatmaps = require("../Models/beatmapData");
-
-exports.leaderBoard = async (req, res) => {
- const users = ["harvey, jajadiff, yourmom, JOY"];
- try {
-  console.log(req.name);
-  res.json(users);
- } catch (error) {
-  console.log(error);
- }
-};
-
-exports.getBeatmapData = async (req, res) => {
- try {
-  const beatmapData = await Beatmaps.findById(req.params.id, {
-   _id: 0,
-  }); //.limit(5) for limio
-  res.json(beatmapData);
-  next();
- } catch (error) {
-  res.status(500).json(error);
- }
-};
 
 exports.getUser = async (req, res) => {
  try {
