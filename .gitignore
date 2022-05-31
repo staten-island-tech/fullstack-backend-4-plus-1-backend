@@ -1,4 +1,3 @@
 variables.env
 *.env
 node_modules
-mongoose.js
