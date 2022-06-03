@@ -38,10 +38,4 @@ router.patch("/update/:id", checkJwt, async (req, res) => {
  }
 });
 
-// router.get("/auth", checkJwt);
-
-// router.post("/add", leaderBoardController.createUser);
-// router.patch("/user/:id", leaderBoardController.updateUser);
-// router.delete("/user/:id", leaderBoardController.removeUser);
-
 module.exports = router;

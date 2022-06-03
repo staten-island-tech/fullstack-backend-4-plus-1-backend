@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config({ path: ".env" });
-const uri =
- "mongodb+srv://harveyDev:Oceantide21@cluster0.9e0na.mongodb.net/LeaderBoardDataBase?retryWrites=true&w=majority";
+
 mongoose
  .connect(`${process.env.DATABASE}`, {
   //
